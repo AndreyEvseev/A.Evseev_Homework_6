@@ -1,6 +1,6 @@
 ﻿// Задача 41. Пользователь вводит с клавиатуры M чисел. Посчитайте, 
 // сколько чисел больше 0 ввёл пользователь.
-// Ввод чисел в строку с разделением пробелом
+// Ввод по одному числу
 
 int NumDigit(string[] mass) // подсчет количества не пустых элементов массива
 {
@@ -65,8 +65,17 @@ void PositiveNum(int[] mas)
     Console.WriteLine("Пользователь ввел " + result + x + "больше 0.");
 }
 
-Console.WriteLine("Введите целые числа, разделённые пробелом: ");
-string str = Console.ReadLine();
+string str = string.Empty;
+Console.Write("Введите целое число: ");
+str = str + Console.ReadLine() + " ";
+Console.WriteLine();
+while (Console.ReadKey().Key != ConsoleKey.Escape) 
+{
+    Console.WriteLine("Для дальнейшего ввода нажмите Enter. Для завершения нажмите Esc");
+    Console.Write("Введите целое число: ");
+    str = str + Console.ReadLine() + " ";
+    Console.WriteLine();
+}
 string[] arrStr = str.Split(' '); // перевод строки в текстовый массив
 PrintArrStr(arrStr); // визуальная проверка текстового массива
 int M = NumDigit(arrStr);
@@ -74,5 +83,3 @@ int[] arr = new int[M];
 arr = stringToDigit(arrStr);
 PrintArrDigit(arr); // визуальная проверка цифрового массива
 PositiveNum(arr);
-
-
